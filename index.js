@@ -31,13 +31,20 @@ const options = {
         fetch(` ${url}${city} `, options)
         .then(response => response.json())
         .then(data=> {
-            console.log(data)
-            displayBoxEl.innerHTML=''
-            displayBoxEl.innerHTML=`<p>Temp : ${data.temp}  </p>
-            <p>Cloud Pct : ${data.cloud_pct}  </p>
-            <p>Feels-like : ${data.feels_like}  </p>
-            <p>Humidty: ${data.humidity}  </p>
-            `
+            
+            if(city==""){
+                displayBoxEl.innerHTML=''
+                displayBoxEl.innerHTML='<p style="color:red;">Please enter a valid city name</p>'
+            }else{
+                displayBoxEl.innerHTML=''
+                displayBoxEl.innerHTML=`<p> <b>Temp</b> : ${data.temp}°  </p>
+                
+                <p><b>Feels-like </b> : ${data.feels_like}° </p>
+                <p><b>Cloud Pct </b>: ${data.cloud_pct}% </p>
+                <p><b>Humidty </b>: ${data.humidity}gm3 </p>`
+            }
+            
+            
 
             
         }

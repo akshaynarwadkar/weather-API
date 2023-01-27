@@ -12,8 +12,9 @@
 }*/
 
 #center-hero{
-    margin: 100px auto;
+    margin: 70px auto;
     width:350px;
+    height: 60vh;
 }
 
 #heading{
@@ -51,4 +52,10 @@
 }
 #display-box h1{
     font-size: 20px;
+}
+
+#footer{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }

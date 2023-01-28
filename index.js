@@ -23,16 +23,11 @@ const options = {
 	}
 };
 
-
-
-
-    btn.onclick=()=>{
-        city=searchEl.value;
-        fetch(` ${url}${city} `, options)
-        .then(response => response.json())
-        .then(data=> {
-            
-            if(city==""){
+const asyncfunc=async()=>{
+    city=searchEl.value;
+    const response = await fetch(`${url}${city}`,options)
+    const data=await response.json()
+    if(city==""){
                 displayBoxEl.innerHTML=''
                 displayBoxEl.innerHTML='<p style="color:red;">Please enter a valid city name</p>'
             }else{
@@ -43,11 +38,32 @@ const options = {
                 <p><b>Cloud Pct </b>: ${data.cloud_pct}% </p>
                 <p><b>Humidty </b>: ${data.humidity}gm3 </p>`
             }
+    
+}
+
+
+    btn.onclick=()=>{
+        asyncfunc()
+        // fetch(` ${url}${city} `, options)
+        // .then(response => response.json())
+        // .then(data=> {
+            
+        //     if(city==""){
+        //         displayBoxEl.innerHTML=''
+        //         displayBoxEl.innerHTML='<p style="color:red;">Please enter a valid city name</p>'
+        //     }else{
+        //         displayBoxEl.innerHTML=''
+        //         displayBoxEl.innerHTML=`<p> <b>Temp</b> : ${data.temp}°  </p>
+                
+        //         <p><b>Feels-like </b> : ${data.feels_like}° </p>
+        //         <p><b>Cloud Pct </b>: ${data.cloud_pct}% </p>
+        //         <p><b>Humidty </b>: ${data.humidity}gm3 </p>`
+        //     }
             
             
 
             
-        }
-        )
-        .catch(err => console.error(err));
+        // }
+        // )
+        // .catch(err => console.error(err));
 }
